@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ##APP_NAME##
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ##APP_NAME##
+  template:
+    metadata:
+      labels:
+        app: ##APP_NAME##
+    spec:
+      containers:
+      - name: ##APP_NAME##-container
+        image: ##APP_NAME##:latest
+        imagePullPolicy: IfNotPresent
+        command: ["/usr/bin/code-server"]
+        args: ["--bind-addr", "0.0.0.0:8080", "--auth", "none", "/root/dev"]
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: ##APP_NAME##-secret
+        workingDir: /root/dev
+        volumeMounts:
+        - name: dev-storage
+          mountPath: /root/dev
+      volumes:
+      - name: dev-storage
+        hostPath:
+          path: ##DEV_HOST_PATH##
+          type: Directory
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ##APP_NAME##-service
+spec:
+  type: NodePort
+  selector:
+    app: ##APP_NAME##
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080

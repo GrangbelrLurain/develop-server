@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# But explicitly track the following files and directories
+!/.gitignore
+!/develop-setup.bat
+!/Dockerfile
+!/k8s-deployment.yaml
+
+# Un-ignore the .gemini directory and the GEMINI.md file within it
+!/.gemini/
+!/.gemini/GEMINI.md
