@@ -156,6 +156,11 @@
 - **Powerlevel10k (선택 사항)**:
   Zsh 쉘의 프롬프트를 더욱 강력하고 시각적으로 멋지게 꾸며주는 Powerlevel10k 테마를 사용하려면 별도로 설치 및 구성해야 합니다.
   - **GitHub**: [https://github.com/romkatv/powerlevel10k\#oh-my-zsh](https://github.com/romkatv/powerlevel10k#oh-my-zsh)
+  - 추천 폰트(MesloLGS NF)
+    - [MesloLGS NF Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
+    - [MesloLGS NF Bold.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf)
+    - [MesloLGS NF Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)
+    - [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
 - **direnv 사용**:
   `direnv`를 사용하는 각 프로젝트 디렉토리에서는 해당 프로젝트의 환경 변수를 자동으로 로드하기 위해 `direnv allow` 명령을 한 번 실행해야 합니다.
 - **VS Code Remote - WSL 확장**:
