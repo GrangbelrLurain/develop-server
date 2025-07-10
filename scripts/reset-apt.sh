@@ -30,7 +30,7 @@ sudo rm -rf /var/lib/apt/lists/*
 
 # Step 3: apt 업데이트를 다시 시도합니다.
 # `--allow-releaseinfo-change`는 이미 사용하고 계시니 그대로 사용합니다.
-sudo apt update --allow-releaseinfo-change
+sudo apt update
 
 # 4. (Optional) Upgrade installed packages
 # 이 단계는 필수는 아니지만, 문제가 해결된 후 시스템을 최신 상태로 만들 때 유용합니다.
