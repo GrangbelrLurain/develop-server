@@ -25,20 +25,19 @@ echo "Configuring Oh My Zsh plugins and theme..."
 # Clone zsh-syntax-highlighting and zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting || true
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || true
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k || true
 
 # Modify ~/.zshrc for plugins and theme
 if [ -f ~/.zshrc ]; then
     # Update plugins line
     sed -i 's/^plugins=(git)/plugins=(git z fzf docker docker-compose nvm zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc || true
     # Set ZSH_THEME
-    sed -i 's/^ZSH_THEME="[^"]*"/ZSH_THEME="agnoster"/' ~/.zshrc || true
+    sed -i 's/^ZSH_THEME="[^"]*"/ZSH_THEME="powerlevel10k/powerlevel10k"/' ~/.zshrc || true
 else
     echo "Warning: ~/.zshrc not found. Oh My Zsh might not have installed correctly or this is a fresh install."
     echo "Attempting to create a basic .zshrc with plugins and theme."
     cat << EOF > ~/.zshrc
 export ZSH="$HOME/.oh-my-zsh"
-
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k || true
 
 plugins=(git z fzf docker docker-compose nvm zsh-syntax-highlighting zsh-autosuggestions)
 source \$ZSH/oh-my-zsh.sh
