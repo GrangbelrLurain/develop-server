@@ -37,11 +37,18 @@ else
     echo "Attempting to create a basic .zshrc with plugins and theme."
     cat << EOF > ~/.zshrc
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="agnoster"
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k || true
+
 plugins=(git z fzf docker docker-compose nvm zsh-syntax-highlighting zsh-autosuggestions)
 source \$ZSH/oh-my-zsh.sh
 EOF
 fi
+
+# use zsh for default shell
+sudo chsh -s "$(which zsh)" "$USER"
+echo "Zsh set as default shell for $USER."
+
 echo "Oh My Zsh plugins and theme configured."
 
 echo "Step 4: Installing productivity CLI tools (tmux, fzf, zoxide, direnv)..."
@@ -49,14 +56,11 @@ sudo apt install -y tmux
 echo "tmux installed."
 
 echo "Installing fzf..."
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf || true
-~/.fzf/install --all --no-bash --no-fish || true # Install for zsh, skip bash/fish
+sudo apt install -y fzf
 echo "fzf installed."
 
 echo "Installing zoxide..."
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash || true
-# Add zoxide init to .zshrc if not already present
-grep -q 'eval "$(zoxide init zsh)"' ~/.zshrc || echo 'eval "$(zoxide init zsh)"' >> ~/.zshrc
+sudo apt install -y zoxide
 echo "zoxide installed."
 
 echo "Installing direnv..."
