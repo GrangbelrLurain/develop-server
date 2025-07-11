@@ -39,6 +39,8 @@ sudo apt-get upgrade -y
 print_message "Installing essential tools (git, curl, ca-certificates, gnupg, lsb-release)"
 sudo apt-get install -y git curl ca-certificates gnupg lsb-release
 
+git config --global credential.helper /mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe
+
 # 2. Install Node.js via nvm
 # -----------------------------------------------------------------------------
 print_message "Installing Node.js v$NODE_VERSION via nvm"
