@@ -39,7 +39,14 @@ sudo apt-get upgrade -y
 print_message "Installing essential tools (git, curl, ca-certificates, gnupg, lsb-release)"
 sudo apt-get install -y git curl ca-certificates gnupg lsb-release
 
-git config --global credential.helper /mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe
+GCM_PATH="/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe"
+
+if [ -f "$GCM_PATH" ]; then
+    print_message "Git Credential Manager found at $GCM_PATH"
+    git config --global credential.helper "'$GCM_PATH'"
+else
+    print_message "Git Credential Manager not found at $GCM_PATH. Please ensure it is installed."
+fi
 
 # 2. Install Node.js via nvm
 # -----------------------------------------------------------------------------
